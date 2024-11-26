@@ -1,4 +1,5 @@
 const { clientData } = require("../fixtures/client")
+const { adressPage } = require("../Pages/adressPage")
 
 describe('QA automation technical test', () => {
 
@@ -16,10 +17,9 @@ describe('QA automation technical test', () => {
   })
 
   it('Enter old and new adresses', ()=>{
-    cy.get('input[id="old_housing.address"]').type("16 Rue Lecourbe 75015 Paris")
-    cy.get('p').contains('16 Rue Lecourbe 75015 Paris').click()
-    cy.get('input[id="housing.address"]').type("20 Rue Lecourbe 75015 Paris")
-    cy.get('p').contains('20 Rue Lecourbe 75015 Paris').click()
+    const adresspage = new adressPage
+    adresspage.ChooseOldAdress()
+    adresspage.chooseNewAdress()
     cy.get('#button_next').click()
   })
 

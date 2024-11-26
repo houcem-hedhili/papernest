@@ -8,5 +8,7 @@ export  const clientData ={
     firstname: client.firstName,
     lastname: client.lastName,
     phone: client.phone,
+    oldAdress: client.oldAdress,
+    newAdress: client.oldAdress
   
 }
