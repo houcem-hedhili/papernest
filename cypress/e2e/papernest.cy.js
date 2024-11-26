@@ -1,5 +1,5 @@
-const { clientData } = require("../fixtures/client")
 const { adressPage } = require("../Pages/adressPage")
+const { clientInfoPage } = require("../Pages/clientInfoPage")
 
 describe('QA automation technical test', () => {
 
@@ -28,16 +28,8 @@ describe('QA automation technical test', () => {
   })
 
   it('Complete clients infos page',()=>{
-    cy.get('input[id="user.email"]').type(clientData.email)
-    cy.intercept('POST', '/api/utils/email/').as('EmailValid');
-    cy.wait("@EmailValid")
-    .its("response.statusCode").should("eq", 200)
-    cy.get('input[id="user.phone_number"]').type(clientData.phone)
-    cy.get('div').contains('M.').click()
-    cy.get('input[id="user.first_name"]').type(clientData.firstname)
-    cy.get('input[id="user.last_name"]').type(clientData.lastname)
-    cy.wait(1000)
-    cy.get('#button_next').click()
+    const clientInfo = new clientInfoPage
+    clientInfo.fillClientInfo()
   })
 
 

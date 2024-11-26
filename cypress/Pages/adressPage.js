@@ -1,9 +1,11 @@
 import { clientData } from "../fixtures/client"
 
+const oldadressinput = 'input[id="old_housing.address"]'
+const newadressinput = 'input[id="housing.address"]'
 export class adressPage {
 
     ChooseOldAdress(){
-        cy.get('input[id="old_housing.address"]')
+        cy.get(oldadressinput)
           .type(clientData.oldAdress)
         cy.get('p')
           .contains(clientData.oldAdress)
@@ -11,7 +13,7 @@ export class adressPage {
     }
 
     chooseNewAdress(){
-        cy.get('input[id="housing.address"]')
+        cy.get(newadressinput)
           .type(clientData.newAdress)
 
         cy.get('p')
